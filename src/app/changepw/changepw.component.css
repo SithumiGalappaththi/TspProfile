@@ -77,3 +77,9 @@ a{
 .submitButton:hover{
   background-color: #31b6eb;
 }
+
+input:focus{
+  background: transparent;
+  color: #d8d7e0;
+  box-shadow: none;
+}

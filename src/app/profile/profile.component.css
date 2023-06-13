@@ -18,17 +18,17 @@ body {
 }
 
 .profile-button:focus {
-    background: #682773;
+    background: #2F58CD;
     box-shadow: none
 }
 
 .profile-button:active {
-    background: #682773;
+    background: #2F58CD;
     box-shadow: none
 }
 
 .back:hover {
-    color: #682773;
+    color: #2F58CD;
     cursor: pointer
 }
 
@@ -117,4 +117,11 @@ body {
 }
 .btndefault:hover{
     background-color: rgb(132, 129, 129);
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+   -webkit-transition-delay: 9999s;
+   transition-delay: 9999s;
 }

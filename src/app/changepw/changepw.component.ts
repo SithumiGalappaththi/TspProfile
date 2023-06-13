@@ -1,59 +1,35 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder,  Validators, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-changepw',
   templateUrl: './changepw.component.html',
   styleUrls: ['./changepw.component.css']
 })
 export class ChangepwComponent {
-    title = 'change passwprd';
-    /*reactiveform!: FormGroup;
-    constructor(private formbuilder: FormBuilder){
-      this.reactiveform = this.formbuilder.group({
-        oldpassword : new FormControl(),
-        newpassword : new FormControl(),
-        confpassword : new FormControl(),
-      }) */
+  data:any;
+  constructor(private formBuilder: FormBuilder, private router:Router) {
+    
+  }
+  formcpw = new FormGroup({
+    OldPassword: new FormControl('', [
+      Validators.required, 
+      Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$') 
+    ]),
+    NewPassword: new FormControl('', [
+      Validators.required, 
+      Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$') 
+    ]),
+    confirmPassword: new FormControl('', [
+      Validators.required, 
+      Validators.pattern('^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9]).{8,}$') 
+    ])
+  });
 
-    /*   registerForm!: FormGroup
-      submitted = false;
-    constructor(private FormBuilder: FormBuilder){
-
-    }
-    ngOnInit(){
-        //validations
-        this.registerForm = this.FormBuilder.group({
-          OldPassword:['',Validators.required],
-          NewPassword:['',Validators.required],
-          confirmPassword:['',Validators.required],
-        })
-    }
-      /* submit(){
-        console.log("Form Submited")
-      } */
-      /* onSubmit(){
-        this.submitted = true
-      if(this.registerForm.invalid){
-        return
-      }
-      alert("Sucessess")
-      } */
-      regArray:any={}
-      constructor(){}
-
-      registerForm!: FormGroup;
-      ngOnInit():void{
-
-        this.registerForm = new FormGroup({
-          OldPassword: new FormControl(),
-          NewPassword: new FormControl(),
-          confirmPassword: new FormControl()
-        })
-      }
-
-      onSubmit(){
-        console.log(this.registerForm.value)
-      }
-
-    }
+  submit() {
+    this.data = this.formcpw.value;
+    console.log(this.data);
+    this.router.navigate(['/Profile']);
+  }
+  }
 
